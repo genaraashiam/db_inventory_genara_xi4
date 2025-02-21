@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>data jenis</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -34,41 +33,23 @@
   </div>
 </nav>
 <div class="container">
-   <h1>data jenis</h1> 
-   <br>
-   <a href="tambah.php" class="btn btn-primary"><i class="fa-solid fa-plus"></i>data jenis</a>
-   <br>
-   <br>
-   <table class="table table-striped">
-   <tr>
-    <th>no</th>
-    <th>id jenis</th>
-    <th>nama jenis</th>
-    <th>aksi</th>
-   </tr>
-   <?php
-
-   include '../../config/koneksi.php';
-   $query = mysqli_query($conn, "SELECT * FROM jenis");
-   $no=1;
-   if(mysqli_num_rows($query)){
-    while($result=mysqli_fetch_assoc($query)){
-        ?>
-        <tr>
-            <td><?= $no ?></td>
-            <td><?= $result['id_jenis'] ?></td>
-            <td><?= $result['nama_jenis'] ?></td>
-            <td>
-            <a href="edit.php?id_jenis=<?php echo $result['id_jenis']?>" class="btn btn-warning"> <i class="fa-solid fa-pen-to-square"></i>edit </a>
-            </td>
-        </tr>
-        <?php
-        $no++;
-    }
-   } else {
-    echo "data kosong";
-   }
    
-   ?>
+<form action="simpan.php" method="POST">
+    <h1>data jenis</h1>
+    <form>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">id jenis</label>
+    <input type="number" name="id_jenis" class="form-control" value="<?php echo $result['id_jenis']?>" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>
+
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">nama jenis</label>
+    <input type="text" name="nama_jenis" class="form-control" value="<?php echo $result['nama_jenis']?>" id="exampleInputPassword1">
+  </div>
+ 
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+    
+<script src = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

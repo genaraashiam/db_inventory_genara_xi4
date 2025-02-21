@@ -36,35 +36,41 @@
    
 <form action="simpan.php" method="POST">
     <h1>data barang</h1>
+    <?php
+    $id_barang=$_GET['id_barang'];
+    include '../../config/koneksi.php';
+    $query=mysqli_query ($conn, "SELECT * FROM barang WHERE id_barang='$id_barang'");
+    $result=mysqli_fetch_array($query);
+    ?>
     <form>
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">id barang</label>
-    <input type="number" name ="id_barang" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <input type="number" name ="id_barang" class="form-control" value="<?php echo $result['id_barang']?>" id="exampleInputEmail1" aria-describedby="emailHelp">
   </div>
 
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">nama barang</label>
-    <input type="teks" name ="nama_barang" class="form-control" id="exampleInputPassword1">
+    <input type="teks" name ="nama_barang" class="form-control" value="<?php echo $result['nama_barang']?>" id="exampleInputPassword1">
   </div>
  
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">id jenis</label>
-    <input type="number" name="id_jenis" class="form-control"   id="exampleInputPassword1">
+    <input type="number" name="id_jenis" class="form-control" value="<?php echo $result['id_jenis']?>" id="exampleInputPassword1">
   </div>
 
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">harga</label>
-    <input type="number" name="harga" class="form-control"  id="exampleInputPassword1">
+    <input type="number" name="harga" class="form-control" value="<?php echo $result['harga']?>" id="exampleInputPassword1">
   </div>
 
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">stok</label>
-    <input type="number" name="stok" class="form-control"  id="exampleInputPassword1">
+    <input type="number" name="stok" class="form-control" value="<?php echo $result['stok']?>" id="exampleInputPassword1">
   </div>
 
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">warna</label>
-    <input type="teks" name="warna" class="form-control"  id="exampleInputPassword1">
+    <input type="teks" name="warna" class="form-control" value="<?php echo $result['warna']?>" id="exampleInputPassword1">
   </div>
 
   <button type="submit" class="btn btn-primary">Submit</button>
